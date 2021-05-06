@@ -2,8 +2,25 @@ import unittest
 
 from LWW.Set import Set as lww_set
 
+from LWW.Tree import Tree as lww_tree
+
 class Test_LWW_Set(unittest.TestCase):
+    def test_set_init(self):
+        '''
+        test lww-set init 
+        '''
+        exception_received = False
+        try:
+            lww = lww_set()
+        except:
+            exception_received = True
+        self.assertFalse(exception_received)
+
+
     def test_set_add(self):
+        '''
+        test adding elements to lww-set
+        '''
         lww = lww_set()
         lww.add("1")
         lww.add(1)
@@ -13,7 +30,7 @@ class Test_LWW_Set(unittest.TestCase):
     
     def test_set_remove(self):
         '''
-            testing element removal mechanism
+            test removing elements from lww-set
         '''
         lww = lww_set()
         lww.add("1")
@@ -48,5 +65,19 @@ class Test_LWW_Set(unittest.TestCase):
     #     lww.__print__()
     #     self.assertTrue(True)        
 
+class Test_LWW_Tree(unittest.TestCase):
+    def test_init(self):
+        '''
+        test lww-tree init
+        '''
+        
+        exception_received = False
+        try:
+            t = lww_tree()
+        except:
+            exception_received = True
+        self.assertFalse(exception_received)
+    def test_adding(self):
+        t = lww_tree()
 if __name__ == '__main__':
     unittest.main()
