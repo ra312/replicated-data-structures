@@ -1,13 +1,6 @@
-import abc
+from LWW.Set import Set
 
-class AbstractTree(object):
-    __metaclass__ = abc.ABCMeta
-
-    @abc.abstractmethod
-    def entry(self): return
-
-    @abc.abstractmethod
-    def left(self): return
-
-    @abc.abstractmethod
-    def right(self): return
+class Tree:
+    def __init__(self):
+        self.root = None
+        self.children =  Set()
