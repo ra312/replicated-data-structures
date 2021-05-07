@@ -89,7 +89,33 @@ class Set:
 		except:
 			raise RuntimeError(f"An internal error when checking if {element} exists")
 
+	def merge(self, other):
+		'''
+		merge one LWW-Set with other LWW-Set
+		:param other:
+		:return: Lww
+		'''
 
+		merged_set = Set()
+
+		with self.lock_when_adding, self.lock_when_removing, other.lock_when_adding, other.lock_when_removing:
+
+			# Merge add_set
+			merged_set.added = {**self.added, **other.added}
+
+			# Merge remove_set
+			merged_set.removed = {**self.removed, **other.removed}
+
+			# Update lww with latest timestamp in add_set
+			for element, timestamp in self.added.items():
+				merged_set.added[element] = max(merged_set.added[element], timestamp)
+
+			# Update lww with latest timestamp in remove_set
+			for element, timestamp in self.removed.items():
+				merged_set.remove[element] = max(merged_set.remove[element], timestamp)
+
+
+		return merged_set
 
 
 

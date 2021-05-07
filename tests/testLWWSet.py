@@ -2,9 +2,10 @@ import unittest
 
 from LWW.Set import Set as lww_set
 
-from LWW.Tree import Tree as lww_tree
-
 class Test_LWW_Set(unittest.TestCase):
+    '''
+    tests for LWW-Set
+    '''
     def test_set_init(self):
         '''
         test lww-set init 
@@ -65,19 +66,7 @@ class Test_LWW_Set(unittest.TestCase):
     #     lww.__print__()
     #     self.assertTrue(True)        
 
-class Test_LWW_Tree(unittest.TestCase):
-    def test_init(self):
-        '''
-        test lww-tree init
-        '''
-        
-        exception_received = False
-        try:
-            t = lww_tree()
-        except:
-            exception_received = True
-        self.assertFalse(exception_received)
-    def test_adding(self):
-        t = lww_tree()
+
+
 if __name__ == '__main__':
     unittest.main()
